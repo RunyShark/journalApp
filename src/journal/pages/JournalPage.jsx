@@ -1,8 +1,15 @@
-import { JournalLayout, NoThingSelectedView } from "../../index";
+import {
+  JournalLayout,
+  NoThingSelectedView,
+  NoteView,
+  ImagenGallery,
+} from "../../index";
 export const JournalPage = () => {
   return (
     <JournalLayout>
-      <NoThingSelectedView />
+      {/* <NoThingSelectedView /> */}
+      <NoteView />
+      <ImagenGallery />
     </JournalLayout>
   );
 };
