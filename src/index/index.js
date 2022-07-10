@@ -5,3 +5,4 @@ export * from "../journal";
 export * from "../router";
 export * from "../themes";
 export * from "../ui";
+export * from "../store";
