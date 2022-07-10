@@ -11,7 +11,16 @@ export const authSlice = createSlice({
     errorMessage: null,
   },
   reducers: {
-    login: (state, action) => {},
+    login: (
+      state,
+      { payload: { displayName, email, photoURL, uid, message } }
+    ) => {
+      state.displayName = displayName || null;
+      state.email = email || null;
+      state.photoURL = photoURL || null;
+      state.uid = uid || null;
+      state.errorMessage = message || null;
+    },
     logout: (state, payload) => {},
     chekingCredentials: (state) => {
       state.status = "checking";

@@ -6,3 +6,4 @@ export * from "../router";
 export * from "../themes";
 export * from "../ui";
 export * from "../store";
+export * from "../firebase";
