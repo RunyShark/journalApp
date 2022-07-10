@@ -1,8 +1,14 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { Google } from "@mui/icons-material";
 import { Grid, Typography, TextField, Button, Link } from "@mui/material";
-import { AuthLayout, useForms, chekigAuthentication } from "../../index";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  AuthLayout,
+  useForms,
+  chekigAuthentication,
+  startGoogleSingIn,
+} from "../../index";
+
 export const LoginPages = () => {
   const { auth } = useSelector((state) => state.auth);
   const dispach = useDispatch();
@@ -17,8 +23,10 @@ export const LoginPages = () => {
     onResetFrom();
   };
 
-  const onGoogleSingIn = () => {
-    console.log(onGoogleSingIn);
+  const onGoogleSingIn = (event) => {
+    event.preventDefault();
+    dispach(startGoogleSingIn());
+    onResetFrom();
   };
 
   return (

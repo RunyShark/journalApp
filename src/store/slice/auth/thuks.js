@@ -4,3 +4,9 @@ export const chekigAuthentication = (email, passord) => {
     dispatch(chekingCredentials());
   };
 };
+
+export const startGoogleSingIn = () => {
+  return async (dispatch) => {
+    dispatch(chekingCredentials());
+  };
+};
