@@ -34,7 +34,7 @@ export const RegisterPage = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     setformSubmire(true);
-    onResetFrom();
+    if (!isFormValid) return;
   };
   const validationFrom = (name) => {
     return name ? name : false;
