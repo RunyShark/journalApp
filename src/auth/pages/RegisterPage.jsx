@@ -2,13 +2,37 @@ import { Link as RouterLink } from "react-router-dom";
 import { AuthLayout, useForms } from "../../index";
 import { Grid, Typography, TextField, Button, Link } from "@mui/material";
 export const RegisterPage = () => {
-  const { email, password, name, onInputChague, onResetFrom } = useForms({
-    name: "",
+  const initialForm = {
+    displayName: "Dario",
     email: "correo@correo",
     password: 1234,
-  });
+  };
+  const formValidations = {
+    displayName: [
+      (value) => value.length >= 1,
+      "El debe de contener mas de 1 letra",
+    ],
+    email: [(value) => value.incluedes("@"), "El correo debe de tener un @"],
+    password: [
+      (value) => value.length >= 6,
+      "El password debe de tener mas de 6 letras",
+    ],
+  };
+
+  const {
+    formState,
+    onInputChague,
+    onResetFrom,
+    isFormValid,
+    displayNameValid,
+    emailValid,
+    passwordValid,
+  } = useForms(initialForm);
+  const { email, password, displayName } = formState;
+
   const onSubmit = (event) => {
     event.preventDefault();
+    console.log(formState);
     onResetFrom();
   };
   return (
@@ -19,8 +43,8 @@ export const RegisterPage = () => {
             <TextField
               label="Nombre completo"
               type="text"
-              name="name"
-              value={name}
+              name="displayName"
+              value={displayName}
               placeholder="Escribe tu nombre"
               fullWidth
               onChange={onInputChague}

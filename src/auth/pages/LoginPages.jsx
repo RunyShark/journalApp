@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import { Google } from "@mui/icons-material";
@@ -8,7 +9,6 @@ import {
   chekigAuthentication,
   startGoogleSingIn,
 } from "../../index";
-import { useMemo } from "react";
 
 export const LoginPages = () => {
   const { status } = useSelector((state) => state.auth);
