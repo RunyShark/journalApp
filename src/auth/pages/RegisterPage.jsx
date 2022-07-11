@@ -12,7 +12,7 @@ export const RegisterPage = () => {
       (value) => value.length >= 1,
       "El debe de contener mas de 1 letra",
     ],
-    email: [(value) => value.incluedes("@"), "El correo debe de tener un @"],
+    email: [(value) => value.includes("@"), "El correo debe de tener un @"],
     password: [
       (value) => value.length >= 6,
       "El password debe de tener mas de 6 letras",
@@ -27,7 +27,7 @@ export const RegisterPage = () => {
     displayNameValid,
     emailValid,
     passwordValid,
-  } = useForms(initialForm);
+  } = useForms(initialForm, formValidations);
   const { email, password, displayName } = formState;
 
   const onSubmit = (event) => {
