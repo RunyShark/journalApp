@@ -1,13 +1,6 @@
 import { useDispatch } from "react-redux";
 import { MenuOutlined, LogoutOutlined } from "@mui/icons-material";
-import {
-  AppBar,
-  Button,
-  Grid,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import { logout } from "../../index";
 
 export const NavBar = ({ drawerWidth = 240 }) => {
