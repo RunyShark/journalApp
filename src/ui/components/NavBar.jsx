@@ -6,7 +6,6 @@ import { logoutFirebasess } from "../../index";
 export const NavBar = ({ drawerWidth = 240 }) => {
   const dispatch = useDispatch();
   const onLogout = () => {
-    console.log("hola");
     dispatch(logoutFirebasess());
   };
   return (
