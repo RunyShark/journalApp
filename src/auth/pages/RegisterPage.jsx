@@ -1,24 +1,25 @@
+import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { AuthLayout, useForms } from "../../index";
 import { Grid, Typography, TextField, Button, Link } from "@mui/material";
+const initialForm = {
+  displayName: "",
+  email: "",
+  password: "",
+};
+const formValidations = {
+  displayName: [
+    (value) => value.length >= 1,
+    "El debe de contener mas de 1 letra",
+  ],
+  email: [(value) => value.includes("@"), "El correo debe de tener un @"],
+  password: [
+    (value) => value.length >= 6,
+    "El password debe de tener mas de 6 letras",
+  ],
+};
 export const RegisterPage = () => {
-  const initialForm = {
-    displayName: "Dario",
-    email: "correo@correo",
-    password: "1234567",
-  };
-  const formValidations = {
-    displayName: [
-      (value) => value.length >= 1,
-      "El debe de contener mas de 1 letra",
-    ],
-    email: [(value) => value.includes("@"), "El correo debe de tener un @"],
-    password: [
-      (value) => value.length >= 6,
-      "El password debe de tener mas de 6 letras",
-    ],
-  };
-
+  const [formSubmire, setformSubmire] = useState(false);
   const {
     formState,
     onInputChague,
@@ -32,7 +33,7 @@ export const RegisterPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-
+    setformSubmire(true);
     onResetFrom();
   };
   const validationFrom = (name) => {
@@ -52,7 +53,7 @@ export const RegisterPage = () => {
               placeholder="Escribe tu nombre"
               fullWidth
               onChange={onInputChague}
-              error={validationFrom(displayNameValid)}
+              error={validationFrom(displayNameValid) && formSubmire}
               helperText={validationFrom(displayNameValid)}
             />
           </Grid>
@@ -65,7 +66,7 @@ export const RegisterPage = () => {
               placeholder="Escribe tu corre"
               fullWidth
               onChange={onInputChague}
-              error={validationFrom(emailValid)}
+              error={validationFrom(emailValid) && formSubmire}
               helperText={validationFrom(emailValid)}
             />
           </Grid>
@@ -78,7 +79,7 @@ export const RegisterPage = () => {
               placeholder="Escribe tu contraseña"
               fullWidth
               onChange={onInputChague}
-              error={validationFrom(passwordValid)}
+              error={validationFrom(passwordValid) && formSubmire}
               helperText={validationFrom(passwordValid)}
             />
           </Grid>
