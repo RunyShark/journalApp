@@ -48,14 +48,14 @@ export const LoginPages = () => {
   const onSubmit = (event) => {
     event.preventDefault();
     setformSubmire(true);
-    //if (!isFormValid) return;
+    if (!isFormValid) return;
     dispach(startLoginWithEmailPassword({ email, password }));
   };
 
   const onGoogleSingIn = (event) => {
     event.preventDefault();
     setformSubmire(true);
-    //if (!isFormValid) return;
+    if (!isFormValid) return;
     dispach(startGoogleSingIn());
     onResetFrom();
   };
