@@ -28,11 +28,12 @@ export const startCreatingUserWhithEmailPassword = ({
 }) => {
   return async (dispatch) => {
     dispatch(chekingCredentials());
-    const resp = await registerUserApp({
+    const results = await registerUserApp({
       email,
       password,
       displayName,
     });
-    const { displayName } = resp;
+    if (!results.ok) return dispatch(logout(results));
+    dispatch(login(results));
   };
 };
