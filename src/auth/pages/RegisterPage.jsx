@@ -35,7 +35,9 @@ export const RegisterPage = () => {
 
     onResetFrom();
   };
-
+  const validationFrom = (name) => {
+    return name ? name : false;
+  };
   return (
     <AuthLayout title="Crear cuenta">
       <h1>FormValid {isFormValid ? "Valido" : "No valido"}</h1>
@@ -50,6 +52,8 @@ export const RegisterPage = () => {
               placeholder="Escribe tu nombre"
               fullWidth
               onChange={onInputChague}
+              error={validationFrom(displayNameValid)}
+              helperText={validationFrom(displayNameValid)}
             />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -61,6 +65,8 @@ export const RegisterPage = () => {
               placeholder="Escribe tu corre"
               fullWidth
               onChange={onInputChague}
+              error={validationFrom(emailValid)}
+              helperText={validationFrom(emailValid)}
             />
           </Grid>
           <Grid item xs={12} sx={{ mt: 2 }}>
@@ -72,6 +78,8 @@ export const RegisterPage = () => {
               placeholder="Escribe tu contraseña"
               fullWidth
               onChange={onInputChague}
+              error={validationFrom(passwordValid)}
+              helperText={validationFrom(passwordValid)}
             />
           </Grid>
 
