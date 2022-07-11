@@ -16,7 +16,8 @@ export const AppRouter = () => {
   useEffect(() => {
     onAuthStateChanged(FirebaseAuth, async (user) => {
       if (!user) return dispatch(logout());
-      return dispatch(login(user));
+      const { displayName, email, photoURL, uid } = user;
+      return dispatch(login({ displayName, email, photoURL, uid }));
     });
   }, []);
 
