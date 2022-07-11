@@ -2,13 +2,21 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { Route, Routes } from "react-router-dom";
-import { AuthRoutes, JournalRoutes, ChekingAuth, FirebaseAuth } from "../index";
+import {
+  AuthRoutes,
+  JournalRoutes,
+  ChekingAuth,
+  FirebaseAuth,
+  logout,
+  login,
+} from "../index";
 
 export const AppRouter = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     onAuthStateChanged(FirebaseAuth, async (user) => {
-      console.log(user);
+      if (!user) return dispatch(logout());
+      return dispatch(login(user));
     });
   }, []);
 
