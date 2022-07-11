@@ -12,7 +12,5 @@ export const useCheckAuth = () => {
       return dispatch(login({ displayName, email, photoURL, uid }));
     });
   }, []);
-  return {
-    status,
-  };
+  return status;
 };
