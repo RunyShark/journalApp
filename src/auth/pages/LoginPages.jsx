@@ -8,14 +8,17 @@ import {
   chekigAuthentication,
   startGoogleSingIn,
 } from "../../index";
+import { useMemo } from "react";
 
 export const LoginPages = () => {
-  const { auth } = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.auth);
+  console.log(status);
   const dispach = useDispatch();
   const { email, password, onInputChague, onResetFrom } = useForms({
     email: "correo@correo",
     password: 1234,
   });
+  const isAuthenticating = useMemo(() => status === "checking", [status]);
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -57,12 +60,22 @@ export const LoginPages = () => {
           </Grid>
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
             <Grid item xs={12} sm={6}>
-              <Button variant="contained" fullWidth type="submit">
+              <Button
+                variant="contained"
+                fullWidth
+                type="submit"
+                disabled={isAuthenticating}
+              >
                 Login
               </Button>
             </Grid>
             <Grid item xs={12} sm={6}>
-              <Button variant="contained" fullWidth onClick={onGoogleSingIn}>
+              <Button
+                variant="contained"
+                fullWidth
+                onClick={onGoogleSingIn}
+                disabled={isAuthenticating}
+              >
                 <Google />
                 <Typography sx={{ ml: 1 }}>Google</Typography>
               </Button>
