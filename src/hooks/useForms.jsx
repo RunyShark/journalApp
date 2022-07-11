@@ -3,7 +3,7 @@ import { useState, useEffect, useMemo } from "react";
 export const useForms = (initialForm = {}, formValidations = {}) => {
   const [formState, setFormState] = useState(initialForm);
   const [formValidation, setFormValidation] = useState({});
-  console.log(formValidation);
+
   useEffect(() => {
     createValidators();
   }, [formState]);
@@ -18,7 +18,7 @@ export const useForms = (initialForm = {}, formValidations = {}) => {
       if (formValidation[formField] !== null) return false;
     }
     return true;
-  }, [formState]);
+  }, [formValidation]);
 
   const onResetFrom = (event) => {
     setFormState(initialForm);

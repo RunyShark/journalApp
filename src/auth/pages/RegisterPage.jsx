@@ -38,6 +38,7 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Crear cuenta">
+      <h1>FormValid {isFormValid ? "Valido" : "No valido"}</h1>
       <form onSubmit={onSubmit}>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
