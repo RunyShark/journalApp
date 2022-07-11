@@ -4,6 +4,8 @@ import {
   addNewEmptyNote,
   setActiveNote,
   savingNewNote,
+  loadNotes,
+  setNotes,
 } from "../../../index";
 export const startNewNote = () => {
   return async (distpach, getState) => {
@@ -29,6 +31,9 @@ export const startLoadingNotes = () => {
   return async (distpach, getState) => {
     const { uid } = getState().auth;
     if (!uid) throw new Error("El uid del usuario no esxiste");
-    console.log(uid);
+
+    const notes = await loadNotes(uid);
+
+    distpach(setNotes(notes));
   };
 };
