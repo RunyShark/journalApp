@@ -1,12 +1,12 @@
-import { async } from "@firebase/util";
 import {
   chekingCredentials,
   signinWithGoogle,
   login,
   logout,
   registerUserApp,
+  loginWithEmailAndPassword,
 } from "../../../index";
-export const chekigAuthentication = (email, passord) => {
+export const chekigAuthentication = (email, password) => {
   return async (dispatch) => {
     dispatch(chekingCredentials());
   };
@@ -33,6 +33,15 @@ export const startCreatingUserWhithEmailPassword = ({
       password,
       displayName,
     });
+    if (!results.ok) return dispatch(logout(results));
+    dispatch(login(results));
+  };
+};
+
+export const startLoginWithEmailPassword = ({ email, password }) => {
+  return async (dispatch) => {
+    dispatch(chekingCredentials());
+    const results = await loginWithEmailAndPassword({ email, password });
     if (!results.ok) return dispatch(logout(results));
     dispatch(login(results));
   };
