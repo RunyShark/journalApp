@@ -24,3 +24,11 @@ export const startNewNote = () => {
     distpach(setActiveNote(newNote));
   };
 };
+
+export const startLoadingNotes = () => {
+  return async (distpach, getState) => {
+    const { uid } = getState().auth;
+    if (!uid) throw new Error("El uid del usuario no esxiste");
+    console.log(uid);
+  };
+};
