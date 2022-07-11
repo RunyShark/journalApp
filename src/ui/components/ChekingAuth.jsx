@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 
 export const ChekingAuth = () => {
   return (
@@ -12,15 +12,12 @@ export const ChekingAuth = () => {
     >
       <Grid
         item
-        className="box-shadow"
-        xs={3}
         sx={{
           width: { md: 450 },
-          backgroundColor: "white",
-          padding: 3,
-          borderRadius: 2,
         }}
-      ></Grid>
+      >
+        <CircularProgress color="warning" />
+      </Grid>
     </Grid>
   );
 };
