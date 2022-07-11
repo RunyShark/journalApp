@@ -5,7 +5,7 @@ export const RegisterPage = () => {
   const initialForm = {
     displayName: "Dario",
     email: "correo@correo",
-    password: 1234,
+    password: "1234567",
   };
   const formValidations = {
     displayName: [
@@ -32,9 +32,10 @@ export const RegisterPage = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log(formState);
+
     onResetFrom();
   };
+
   return (
     <AuthLayout title="Crear cuenta">
       <form onSubmit={onSubmit}>
