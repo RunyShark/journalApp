@@ -55,7 +55,7 @@ export const LoginPages = () => {
   const onGoogleSingIn = (event) => {
     event.preventDefault();
     setformSubmire(true);
-    if (!isFormValid) return;
+
     dispach(startGoogleSingIn());
     onResetFrom();
   };
