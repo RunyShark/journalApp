@@ -108,7 +108,7 @@ export const NoteView = () => {
           minRows={5}
         />
       </Grid>
-      <ImagenGallery />
+      <ImagenGallery images={active.imagenUrls} />
     </Grid>
   );
 };
