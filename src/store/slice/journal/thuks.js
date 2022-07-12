@@ -53,5 +53,6 @@ export const startSaveNote = () => {
 
     const docRef = doc(FirebaseDB, `${uid}/journal/notes/${active.id}`);
     await setDoc(docRef, noteToFireStroe, { merge: true });
+    distpach(updateNote(active));
   };
 };
