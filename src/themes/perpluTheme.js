@@ -4,10 +4,10 @@ import { red } from "@mui/material/colors";
 export const perpluTheme = createTheme({
   palette: {
     primary: {
-      main: "#262254",
+      main: "#006d77",
     },
     secondary: {
-      main: "#543884",
+      main: "#83c5be",
     },
     error: {
       main: red.A400,
