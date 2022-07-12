@@ -6,6 +6,8 @@ import {
   savingNewNote,
   loadNotes,
   setNotes,
+  updateNote,
+  setSaving,
 } from "../../../index";
 export const startNewNote = () => {
   return async (distpach, getState) => {
@@ -16,12 +18,14 @@ export const startNewNote = () => {
       title: "",
       body: "",
       date: new Date().getTime(),
+      imageUrls: [],
     };
 
     const newDoc = doc(collection(FirebaseDB, `${uid}/journal/notes`));
     await setDoc(newDoc, newNote);
 
     newNote.id = newDoc.id;
+
     distpach(addNewEmptyNote(newNote));
     distpach(setActiveNote(newNote));
   };
@@ -35,5 +39,19 @@ export const startLoadingNotes = () => {
     const notes = await loadNotes(uid);
 
     distpach(setNotes(notes));
+  };
+};
+
+export const startSaveNote = () => {
+  return async (distpach, getState) => {
+    distpach(setSaving());
+    const { uid } = getState().auth;
+    const { active } = getState().journal;
+    console.log(active);
+    const noteToFireStroe = { ...active };
+    delete noteToFireStroe.id;
+
+    const docRef = doc(FirebaseDB, `${uid}/journal/notes/${active.id}`);
+    await setDoc(docRef, noteToFireStroe, { merge: true });
   };
 };

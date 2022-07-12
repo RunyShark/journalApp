@@ -9,14 +9,14 @@ import {
 } from "@mui/material";
 import { TurnedInNot } from "@mui/icons-material";
 import { setActiveNote } from "../../index";
-export const CardNotes = ({ title = "", body, date, imagenUrls = [] }) => {
+export const CardNotes = ({ title = "", body, date, imagenUrls = [], id }) => {
   const dispatch = useDispatch();
   const { active } = useSelector((state) => state.journal);
   const newTitle = useMemo(() => {
     return title.length > 17 ? title.substring(0, 17) + "..." : title;
   }, [title]);
   const onActiveTask = () => {
-    const note = { title, body, date, imagenUrls };
+    const note = { title, body, date, imagenUrls, id };
     dispatch(setActiveNote(note));
   };
   return (

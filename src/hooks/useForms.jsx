@@ -8,6 +8,10 @@ export const useForms = (initialForm = {}, formValidations = {}) => {
     createValidators();
   }, [formState]);
 
+  useEffect(() => {
+    setFormState(initialForm);
+  }, [initialForm]);
+
   const onInputChague = ({ target }) => {
     const { name, value } = target;
     setFormState({ ...formState, [name]: value });

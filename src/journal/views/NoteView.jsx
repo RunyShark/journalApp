@@ -1,11 +1,17 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { SaveOutlined } from "@mui/icons-material";
-import { ImagenGallery, useForms } from "../../index";
+import {
+  ImagenGallery,
+  setActiveNote,
+  useForms,
+  startSaveNote,
+} from "../../index";
 
 export const NoteView = () => {
   const { active } = useSelector((state) => state.journal);
+  const dispatch = useDispatch();
   const { onInputChague, onResetFrom, formState, body, date, title } =
     useForms(active);
 
@@ -13,6 +19,14 @@ export const NoteView = () => {
     const newDate = new Date(date);
     return newDate.toUTCString();
   }, [date]);
+
+  useEffect(() => {
+    dispatch(setActiveNote(formState));
+  }, [formState]);
+
+  const onSaveNote = () => {
+    dispatch(startSaveNote());
+  };
 
   return (
     <Grid
@@ -29,7 +43,7 @@ export const NoteView = () => {
         </Typography>
       </Grid>
       <Grid item>
-        <Button color="primary" sx={{ padding: 2 }}>
+        <Button color="primary" sx={{ padding: 2 }} onClick={onSaveNote}>
           <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
           Gurdar
         </Button>
