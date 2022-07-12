@@ -56,3 +56,10 @@ export const startSaveNote = () => {
     distpach(updateNote(active));
   };
 };
+
+export const startUploadingFiles = (files = []) => {
+  return async (distpach) => {
+    distpach(setSaving());
+    console.log(files);
+  };
+};
