@@ -8,6 +8,7 @@ import {
   setNotes,
   updateNote,
   setSaving,
+  fileUpload,
 } from "../../../index";
 export const startNewNote = () => {
   return async (distpach, getState) => {
@@ -60,6 +61,6 @@ export const startSaveNote = () => {
 export const startUploadingFiles = (files = []) => {
   return async (distpach) => {
     distpach(setSaving());
-    console.log(files);
+    await fileUpload(files[0]);
   };
 };
