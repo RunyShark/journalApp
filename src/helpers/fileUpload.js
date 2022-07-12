@@ -1,7 +1,7 @@
 export const fileUpload = async (file) => {
   if (!file) throw new Error("No tenemos ningúna archivo a subir");
 
-  const cloudUrl = "https://api.cloudinary.com/v1_1/cursos-udemy/upload";
+  const cloudUrl = "https://api.cloudinary.com/v1_1/runyshark1/upload";
 
   const formData = new FormData();
   formData.append("upload_preset", "React-journal");
