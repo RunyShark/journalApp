@@ -9,6 +9,7 @@ import {
   updateNote,
   setSaving,
   fileUpload,
+  setPhotosToActiveNote,
 } from "../../../index";
 export const startNewNote = () => {
   return async (distpach, getState) => {
@@ -61,6 +62,12 @@ export const startSaveNote = () => {
 export const startUploadingFiles = (files = []) => {
   return async (distpach) => {
     distpach(setSaving());
-    await fileUpload(files[0]);
+
+    const fileUploadPromises = [];
+    for (const file of files) {
+      fileUploadPromises.push(fileUpload(file));
+    }
+    const photosUrls = await Promise.all(fileUploadPromises);
+    distpach(setPhotosToActiveNote(photosUrls));
   };
 };
