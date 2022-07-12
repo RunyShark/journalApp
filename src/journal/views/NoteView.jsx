@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { SaveOutlined } from "@mui/icons-material";
@@ -7,6 +8,11 @@ export const NoteView = () => {
   const { active } = useSelector((state) => state.journal);
   const { onInputChague, onResetFrom, formState, body, date, title } =
     useForms(active);
+
+  const dateString = useMemo(() => {
+    const newDate = new Date(date);
+    return newDate.toUTCString();
+  }, [date]);
 
   return (
     <Grid
@@ -19,7 +25,7 @@ export const NoteView = () => {
     >
       <Grid item>
         <Typography fontSize={39} fontWeight="light">
-          08 de julio 2022
+          {dateString}
         </Typography>
       </Grid>
       <Grid item>
