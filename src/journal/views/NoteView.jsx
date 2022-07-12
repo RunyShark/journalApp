@@ -12,7 +12,9 @@ import {
 } from "../../index";
 
 export const NoteView = () => {
-  const { active, messageSaved } = useSelector((state) => state.journal);
+  const { active, messageSaved, isSaving } = useSelector(
+    (state) => state.journal
+  );
   const dispatch = useDispatch();
   const { onInputChague, onResetFrom, formState, body, date, title } =
     useForms(active);
@@ -50,7 +52,12 @@ export const NoteView = () => {
         </Typography>
       </Grid>
       <Grid item>
-        <Button color="primary" sx={{ padding: 2 }} onClick={onSaveNote}>
+        <Button
+          color="primary"
+          sx={{ padding: 2 }}
+          onClick={onSaveNote}
+          disabled={isSaving}
+        >
           <SaveOutlined sx={{ fontSize: 30, mr: 1 }} />
           Gurdar
         </Button>
