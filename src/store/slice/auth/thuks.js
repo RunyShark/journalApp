@@ -1,4 +1,3 @@
-import { async } from "@firebase/util";
 import {
   chekingCredentials,
   signinWithGoogle,
@@ -7,6 +6,7 @@ import {
   registerUserApp,
   loginWithEmailAndPassword,
   logoutFirebase,
+  clearNotesLogout,
 } from "../../../index";
 export const chekigAuthentication = (email, password) => {
   return async (dispatch) => {
@@ -52,6 +52,7 @@ export const startLoginWithEmailPassword = ({ email, password }) => {
 export const logoutFirebasess = () => {
   return async (dispatch) => {
     await logoutFirebase();
+    dispatch(clearNotesLogout());
     dispatch(logout());
   };
 };
