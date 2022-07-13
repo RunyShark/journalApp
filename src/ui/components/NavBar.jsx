@@ -31,7 +31,7 @@ export const NavBar = ({ drawerWidth = 240 }) => {
           alignItems="center"
         >
           <Typography variant="h6" noWrap component="div">
-            JournalApp
+            Agenda
           </Typography>
           <IconButton color="error" onClick={onLogout}>
             <LogoutOutlined />
